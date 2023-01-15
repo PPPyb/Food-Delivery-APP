@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "mybatis-3-config.dtd">
+<configuration>
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"></transactionManager>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver" />
+                <property name="url" value="jdbc:mysql://localhost:3306/food?useUnicode=true&amp;characterEncoding=utf8" />
+                <property name="username" value="root" />
+                <property name="password" value="flzx3000c,ysyhl9t" />
+            </dataSource>
+        </environment>
+    </environments>
+    <mappers>
+        <mapper resource="userMapping.xml" />
+        <mapper resource="orderMapping.xml" />
+        <mapper resource="shopitemsMapping.xml" />
+        <mapper resource="tokenMapping.xml" />
+        <mapper resource="goods_collectionMapping.xml" />
+        <mapper resource="shopMapping.xml" />
+        <mapper resource="goodsMapping.xml" />
+        <mapper resource="emailMapping.xml" />
+    </mappers>
+</configuration>

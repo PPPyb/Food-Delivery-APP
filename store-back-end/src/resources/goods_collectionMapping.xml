@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="goods_collection.sql">
+
+    <select id="getNumOfItem"  resultType="int">
+        SELECT COUNT(goodscol_id) FROM `goods_collection`
+    </select>
+
+
+    <insert id="addGoodsCollectionRecord" parameterType="com.xzr.glassfishDemo.bean.GoodsCollection"
+            useGeneratedKeys="true" keyProperty="userid">
+        insert into
+            goods_collection(goodscol_id,collection_id, goodsid, goodsnum, goodsinfo)
+        values(#{goodscol_id}, #{collection_id}, #{goodsid}, #{goodsnum}, #{goodsinfo})
+    </insert>
+</mapper>

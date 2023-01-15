@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="orders.sql">
+
+    <select id="getOrderByUserid" parameterType="int"  resultType="int">
+        select orderid from `order`
+            where userid = #{userid}
+    </select>
+
+    <insert id="insertOrder" parameterType="com.xzr.glassfishDemo.bean.Order"
+            useGeneratedKeys="true" keyProperty="orderid">
+        insert into
+            `order`(userid, order_time, collection_id, total_price, `state`, address, deliveryid, arrive_time, comment)
+        values(#{userid}, #{order_time}, #{collection_id}, #{total_price}, #{state}, #{address}, #{deliveryid},
+               #{arrive_time}, #{comment})
+    </insert>
+
+    <select id="getUseridByOrder" parameterType="int" resultType="int">
+        select userid from `order` where orderid = #{orderid}
+    </select>
+
+    <update id="updateOrderState" parameterType="com.xzr.glassfishDemo.bean.Order">
+        UPDATE `order` SET `state` = #{state} WHERE (`orderid` = #{orderid});
+    </update>
+
+
+    <select id="getAllInfo"  resultType="com.xzr.glassfishDemo.bean.Order">
+        SELECT * FROM `order`
+    </select>
+</mapper>

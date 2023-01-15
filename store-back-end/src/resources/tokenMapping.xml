@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="token.sql">
+
+    <select id="getUsersByToken" parameterType="String" resultType="int">
+        select userid from token where token = #{token}
+    </select>
+
+    <delete id="deleteToken" parameterType="int">
+        delete from token WHERE `userid` = #{userid};
+    </delete>
+
+
+    <insert id="insertNewToken" parameterType="com.xzr.glassfishDemo.bean.Token">
+        INSERT INTO `food`.`token` (`userid`, `token`) VALUES (#{userid}, #{token});
+    </insert>
+
+    <update id="updateTokenByUserid" parameterType="com.xzr.glassfishDemo.bean.Token">
+        UPDATE `token` SET `token` =  #{token} where `userid` = #{userid};
+    </update>
+
+</mapper>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="email.sql">
+
+    <insert id="insertEmail" parameterType="com.xzr.glassfishDemo.bean.EmailCode"
+            useGeneratedKeys="true" keyProperty="id">
+        insert into
+            `email_code`(email, code, `time`)
+        values(#{email}, #{code}, #{time})
+    </insert>
+
+
+    <select id="returnRecord" resultType="com.xzr.glassfishDemo.bean.EmailCode">
+        SELECT * FROM food.email_code WHERE id=(SELECT id FROM food.email_code ORDER BY id  DESC limit 1)
+    </select>
+</mapper>

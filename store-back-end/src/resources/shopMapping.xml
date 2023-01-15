@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="shopItem.sql">
+
+    <select id="getAllItems" resultType="com.xzr.glassfishDemo.bean.ShopItem">
+        select * from goods
+    </select>
+
+
+
+    <select id="getItemDetails" parameterType="int" resultType="com.xzr.glassfishDemo.bean.ShopItem">
+        select * from goods where goodsid = #{goodsid}
+    </select>
+
+
+    <select id="getOrderByUserid" parameterType="com.xzr.glassfishDemo.bean.Order" resultType="com.xzr.glassfishDemo.bean.Order">
+        select * from `food`.`order` where `userid`=#{userid}
+    </select>
+
+
+    <select id="getOrderidByUserid" parameterType="int" resultType="int">
+        select orderid from `food`.`order` where `userid`=#{selectedUserid}
+    </select>
+
+
+    <select id="getinfoByOrderid" parameterType="int" resultType="com.xzr.glassfishDemo.bean.Order">
+        select * from `food`.`order` where `orderid`=#{inputOrderid}
+    </select>
+
+
+    <select id="getGoodsinfoByCollectionid" parameterType="int" resultType="com.xzr.glassfishDemo.bean.SelectedGoods">
+        select goods_collection.goodsid,goods_collection.goodsinfo,goods_collection.goodsnum,
+        goods.goodsname,goods.area,goods.price,goods.cover,goods.shopname
+        from goods inner join goods_collection on goods.goodsid=goods_collection.goodsid and goods_collection.collection_id= #{selectedCollectionid}
+    </select>
+
+
+
+    <select id="getinfoByShopname" parameterType="string" resultType="com.xzr.glassfishDemo.bean.ShopItem">
+        select * from goods where shopname = #{shopname}
+    </select>
+
+
+    <select id="getAllOrderid" resultType="int">
+        select orderid from `order`
+    </select>
+
+</mapper>
